@@ -1,6 +1,6 @@
 /*
 TODO: 
-    add clear button and delete expression one by one
+    delete last letter from expression
 
     design
 */
@@ -54,7 +54,6 @@ function seperate(value,lastOperator){
     let checkbegin = /^[\+\-\*\/]{1}[\-\+]/;
 
     if (checkbegin.test(second) == true) {
-        //console.log('2 zeichen');       
         operator = second.slice(0,1);
         second1 = Number(second.slice(1));
         result = calculate(first,second1,operator);
@@ -67,9 +66,7 @@ function seperate(value,lastOperator){
 
     let m = document.createElement('span');
     m.textContent = result;
-    // console.log(first);
-    // console.log(second1);
-    // console.log(operator);
+    
     if (lastOperator == '=') {
         onScreenExp = result.toString();
         remove_children(results);
@@ -77,7 +74,6 @@ function seperate(value,lastOperator){
         
     } else {
         onScreenExp = result.toString() + lastOperator;
-        //console.log('bei andern:' + onScreenExp);
         remove_children(results);
         remove_children(typed);
         typed.appendChild(m);
@@ -86,34 +82,24 @@ function seperate(value,lastOperator){
         typed.appendChild(lastop);
     }
     
-    results.appendChild(m);
-    console.log('Last: ' + onScreenExp);
-    console.log(typeof result);
-    console.log(results.hasChildNodes())
-    console.log(typed.hasChildNodes())
-    
+    results.appendChild(m);    
 }
+
+
 function checking(number){
     let regex = /^[\-]?\d+(\.\d+)?[\+\-\*\/]{1}[\+\-]?\d+(\.\d+)?[\+\-\*\/\=]{1}$/
-
-    let isNum = /\d/;
-    let isOp = /[\+\-\*\/]/;
-
     let errorText = 'No valid math expression';
     let p = document.createElement('span');
     p.textContent = number;
     remove_children(error);
     
-    // console.log('Len: ' + onScreenExp.length);
-    // console.log(results.hasChildNodes() + ' ' + typed.hasChildNodes());
-    // console.log(isNum)
+
     if((onScreenExp.length == 0)){
         onScreenExp = number.toString();
         
     }
     else if ((typed.hasChildNodes() == false) && (results.hasChildNodes() == true) && (typeof number) == 'number') 
     {
-        //console.log('hierher');
         remove_children(results);
         onScreenExp = number.toString();
     }
@@ -121,30 +107,33 @@ function checking(number){
         typed.appendChild(p);
         onScreenExp += number.toString();
     }
-    //|| i 
     typed.appendChild(p);
-    console.log('onscreen after typed: ' +onScreenExp);
 
     if (regex.test(onScreenExp)) {
         let lastOperator = onScreenExp.slice(-1);
-        //console.log(lastOperator);
         seperate(onScreenExp.slice(0,-1),lastOperator);
     }
     else if ((number == '=') && !regex.test(onScreenExp)) {
         
         remove_children(typed);
+        remove_children(results);
         p.textContent = errorText;
         error.appendChild(p);
         onScreenExp = '';
 
     }
     else {
-        console.log('not valid')
+        //console.log('not valid')
     }
 }
 
+function deleteAll(){
+    remove_children(results);
+    remove_children(typed);
+    onScreenExp = '';
+}
+
 let onScreenExp = '';
-//console.log(onScreenExp);
 
 btn1.addEventListener('click',function(){checking(1)})
 btn2.addEventListener('click',function(){checking(2)})
@@ -157,6 +146,13 @@ btn8.addEventListener('click',function(){checking(8)})
 btn9.addEventListener('click',function(){checking(9)})
 btn0.addEventListener('click',function(){checking(0)})
 btndot.addEventListener('click',function(){checking('.')})
+btnplus.addEventListener('click',function(){checking('+')})
+btnminus.addEventListener('click',function(){checking('-')})
+btnmul.addEventListener('click',function(){checking('*')})
+btndiv.addEventListener('click',function(){checking('/')})
+btnresult.addEventListener('click',function(){checking('=')})
+
+btnDeleteAll.addEventListener('click',function(){deleteAll()});
 
 window.addEventListener('keydown', function(event){
     switch (event.key) {
@@ -212,13 +208,3 @@ window.addEventListener('keydown', function(event){
             break;
     }
 })
-
-
-btnplus.addEventListener('click',function(){//textAppear('+');
-checking('+')})
-btnminus.addEventListener('click',function(){//textAppear('-');
-checking('-')})
-btnmul.addEventListener('click',function(){checking('*')})
-btndiv.addEventListener('click',function(){checking('/')})
-btnresult.addEventListener('click',function(){//textAppear('=');
-checking('=')})
