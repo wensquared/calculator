@@ -1,9 +1,6 @@
 /*
 TODO: 
-    typing new number after = , still saved the last result, only save of typing an
-    operator
-    
-    keypress functionality - DONE
+    add clear button and delete expression one by one
 
     design
 */
@@ -91,7 +88,9 @@ function seperate(value,lastOperator){
     
     results.appendChild(m);
     console.log('Last: ' + onScreenExp);
-    console.log(result);
+    console.log(typeof result);
+    console.log(results.hasChildNodes())
+    console.log(typed.hasChildNodes())
     
 }
 function checking(number){
@@ -100,42 +99,49 @@ function checking(number){
     let isNum = /\d/;
     let isOp = /[\+\-\*\/]/;
 
-
+    let errorText = 'No valid math expression';
     let p = document.createElement('span');
     p.textContent = number;
-    typed.appendChild(p);
-    console.log('Len: ' + onScreenExp.length);
-    console.log(results.hasChildNodes() + ' ' + typed.hasChildNodes());
+    remove_children(error);
+    
+    // console.log('Len: ' + onScreenExp.length);
+    // console.log(results.hasChildNodes() + ' ' + typed.hasChildNodes());
+    // console.log(isNum)
     if((onScreenExp.length == 0)){
         onScreenExp = number.toString();
+        
     }
-    else if ((typed.hasChildNodes() == true) && (results.hasChildNodes() == true)) {
-        console.log('hierher');
+    else if ((typed.hasChildNodes() == false) && (results.hasChildNodes() == true) && (typeof number) == 'number') 
+    {
+        //console.log('hierher');
+        remove_children(results);
         onScreenExp = number.toString();
     }
     else{
+        typed.appendChild(p);
         onScreenExp += number.toString();
     }
     //|| i 
-    console.log(onScreenExp);
+    typed.appendChild(p);
+    console.log('onscreen after typed: ' +onScreenExp);
 
     if (regex.test(onScreenExp)) {
         let lastOperator = onScreenExp.slice(-1);
         //console.log(lastOperator);
         seperate(onScreenExp.slice(0,-1),lastOperator);
-    } else {
+    }
+    else if ((number == '=') && !regex.test(onScreenExp)) {
+        
+        remove_children(typed);
+        p.textContent = errorText;
+        error.appendChild(p);
+        onScreenExp = '';
+
+    }
+    else {
         console.log('not valid')
     }
 }
-
-
-// function textAppear(number){
-//     let p = document.createElement('span');
-//     p.textContent = number;
-//     typed.appendChild(p);
-//     onScreenExp += number.toString();
-//     console.log(onScreenExp);
-// }
 
 let onScreenExp = '';
 //console.log(onScreenExp);
