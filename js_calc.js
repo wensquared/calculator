@@ -3,7 +3,7 @@ TODO:
     typing new number after = , still saved the last result, only save of typing an
     operator
     
-    keypress functionality
+    keypress functionality - DONE
 
     design
 */
@@ -141,8 +141,7 @@ let onScreenExp = '';
 //console.log(onScreenExp);
 
 btn1.addEventListener('click',function(){checking(1)})
-btn2.addEventListener('click',function(){//textAppear(2);
-    checking(2)})
+btn2.addEventListener('click',function(){checking(2)})
 btn3.addEventListener('click',function(){checking(3)})
 btn4.addEventListener('click',function(){checking(4)})
 btn5.addEventListener('click',function(){checking(5)})
@@ -152,6 +151,61 @@ btn8.addEventListener('click',function(){checking(8)})
 btn9.addEventListener('click',function(){checking(9)})
 btn0.addEventListener('click',function(){checking(0)})
 btndot.addEventListener('click',function(){checking('.')})
+
+window.addEventListener('keydown', function(event){
+    switch (event.key) {
+        case '1':
+            checking(1);
+            break;
+        case '2':
+            checking(2);
+            break;
+        case '3':
+            checking(3);
+            break;
+        case '4':
+            checking(4);
+            break;
+        case '5':
+            checking(5);
+            break;
+        case '6':
+            checking(6);
+            break;
+        case '7':
+            checking(7);
+            break;
+        case '8':
+            checking(8);
+            break;
+        case '9':
+            checking(9);
+            break;
+        case '0':
+            checking(0);
+            break;
+        case '.':
+            checking('.');
+            break;
+        case '+':
+            checking('+');
+            break;
+        case '-':
+            checking('-');
+            break;
+        case '*':
+            checking('*');
+            break;
+        case '/':
+            checking('/');
+            break;
+        case 'Enter':
+            checking('=');
+            break;
+        default:
+            break;
+    }
+})
 
 
 btnplus.addEventListener('click',function(){//textAppear('+');
