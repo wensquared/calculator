@@ -1,7 +1,6 @@
 /*
 TODO: 
-    delete last letter from expression
-
+    
     design
 */
 
@@ -126,6 +125,13 @@ function checking(number){
         //console.log('not valid')
     }
 }
+function deleteLast(){
+    typed.removeChild(typed.lastChild);
+    console.log(typed);
+    onScreenExp = onScreenExp.slice(0,-1);
+    console.log(onScreenExp);
+
+}
 
 function deleteAll(){
     remove_children(results);
@@ -153,6 +159,8 @@ btndiv.addEventListener('click',function(){checking('/')})
 btnresult.addEventListener('click',function(){checking('=')})
 
 btnDeleteAll.addEventListener('click',function(){deleteAll()});
+
+btnDelete.addEventListener('click',function(){deleteLast()})
 
 window.addEventListener('keydown', function(event){
     switch (event.key) {
