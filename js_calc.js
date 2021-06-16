@@ -86,7 +86,8 @@ function seperate(value,lastOperator){
 
 
 function checking(number){
-    let regex = /^[\-]?\d+(\.\d+)?[\+\-\*\/]{1}[\+\-]?\d+(\.\d+)?[\+\-\*\/\=]{1}$/
+    let regex = /^[\-]?\d+(\.\d+)?[\+\-\*\/]{1}[\+\-]?\d+(\.\d+)?[\+\-\*\/\=]{1}$/;
+    let divideZero = /^[\-]?\d+(\.\d+)?\/{1}[\+\-]?0\=$/;
     let errorText = 'No valid math expression';
     let p = document.createElement('span');
     p.textContent = number;
@@ -109,8 +110,19 @@ function checking(number){
     typed.appendChild(p);
 
     if (regex.test(onScreenExp)) {
-        let lastOperator = onScreenExp.slice(-1);
-        seperate(onScreenExp.slice(0,-1),lastOperator);
+        if (divideZero.test(onScreenExp)) {
+            let err = 'Don\'t do that please';
+            p.textContent = err;
+            error.appendChild(p);
+            remove_children(typed);
+            remove_children(results);
+            onScreenExp = '';
+        }
+        else{
+            let lastOperator = onScreenExp.slice(-1);
+            seperate(onScreenExp.slice(0,-1),lastOperator);
+        }
+        
     }
     else if ((number == '=') && !regex.test(onScreenExp)) {
         
@@ -136,6 +148,7 @@ function deleteLast(){
 function deleteAll(){
     remove_children(results);
     remove_children(typed);
+    remove_children(error);
     onScreenExp = '';
 }
 
@@ -211,6 +224,9 @@ window.addEventListener('keydown', function(event){
             break;
         case 'Enter':
             checking('=');
+            break;
+        case 'Backspace':
+            deleteLast();
             break;
         default:
             break;
