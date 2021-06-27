@@ -1,9 +1,7 @@
-/*
+/* 
 TODO: 
-    - design
-    - keyboard press animating buttonpress
+    - add readme comments 
 */
-
 function calculate(val1,val2,operator){
     let result = 0;
 
@@ -28,7 +26,6 @@ function calculate(val1,val2,operator){
             console.log('whooops');
             break;
     }
-
     return result;
 }
 
