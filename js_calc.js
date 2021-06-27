@@ -1,6 +1,7 @@
 /*
 TODO: 
     - design
+    - keyboard press animating buttonpress
 */
 
 function calculate(val1,val2,operator){
@@ -178,56 +179,93 @@ window.addEventListener('keydown', function(event){
     switch (event.key) {
         case '1':
             checking(1);
+            document.getElementById('btn1').classList.add('button-active');
             break;
         case '2':
             checking(2);
+            document.getElementById('btn2').classList.add('button-active');
             break;
         case '3':
             checking(3);
+            document.getElementById('btn3').classList.add('button-active');
             break;
         case '4':
             checking(4);
+            document.getElementById('btn4').classList.add('button-active');
             break;
         case '5':
             checking(5);
+            document.getElementById('btn5').classList.add('button-active');
             break;
         case '6':
             checking(6);
+            document.getElementById('btn6').classList.add('button-active');
             break;
         case '7':
             checking(7);
+            document.getElementById('btn7').classList.add('button-active');
             break;
         case '8':
             checking(8);
+            document.getElementById('btn8').classList.add('button-active');
             break;
         case '9':
             checking(9);
+            document.getElementById('btn9').classList.add('button-active');
             break;
         case '0':
             checking(0);
+            document.getElementById('btn0').classList.add('button-active');
             break;
         case '.':
             checking('.');
+            document.getElementById('btndot').classList.add('button-active');
             break;
         case '+':
             checking('+');
+            document.getElementById('btnplus').classList.add('button-active');
             break;
         case '-':
             checking('-');
+            document.getElementById('btnminus').classList.add('button-active');
             break;
         case '*':
             checking('*');
+            document.getElementById('btnmul').classList.add('button-active');
             break;
         case '/':
             checking('/');
+            document.getElementById('btndiv').classList.add('button-active');
             break;
         case 'Enter':
             checking('=');
+            document.getElementById('btnresult').classList.add('button-active');
             break;
         case 'Backspace':
             deleteLast();
+            document.getElementById('btnDelete').classList.add('button-active');
             break;
         default:
             break;
     }
 })
+
+document.onkeyup = function(e) {
+    document.getElementById('btn1').classList.remove('button-active');
+    document.getElementById('btn2').classList.remove('button-active');
+    document.getElementById('btn3').classList.remove('button-active');
+    document.getElementById('btn4').classList.remove('button-active');
+    document.getElementById('btn5').classList.remove('button-active');
+    document.getElementById('btn6').classList.remove('button-active');
+    document.getElementById('btn7').classList.remove('button-active');
+    document.getElementById('btn8').classList.remove('button-active');
+    document.getElementById('btn9').classList.remove('button-active');
+    document.getElementById('btn0').classList.remove('button-active');
+    document.getElementById('btndot').classList.remove('button-active');
+    document.getElementById('btnplus').classList.remove('button-active');
+    document.getElementById('btnminus').classList.remove('button-active');
+    document.getElementById('btnmul').classList.remove('button-active');
+    document.getElementById('btndiv').classList.remove('button-active');
+    document.getElementById('btnresult').classList.remove('button-active');
+    document.getElementById('btnDelete').classList.remove('button-active');
+}
