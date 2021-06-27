@@ -3,41 +3,39 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Vorlage</title>
-        <style>
-            * {
-                box-sizing: border-box;
-            }
-        </style>
+        <title>Calculator</title>
+        <link rel="stylesheet" href="./stlyes.css">
     </head>
     <body>
+        <h1>Calculator</h1>
         <main>
-            <div id="results"></div>
-            <hr>
-            <div id="typed"></div>
-            <hr>
-            <div id="error"></div>
-            <br>
-            <div>
-                <button id="btn1">1</button>
-                <button id="btn2">2</button>
-                <button id="btn3">3</button>
-                <button id="btn4">4</button>
-                <button id="btn5">5</button>
-                <button id="btn6">6</button>
-                <button id="btn7">7</button>
-                <button id="btn8">8</button>
-                <button id="btn9">9</button>
-                <button id="btn0">0</button>
-                <button id="btndot">.</button>
-                <button id="btnplus">+</button>
-                <button id="btnminus">-</button>
-                <button id="btnmul">*</button>
-                <button id="btndiv">/</button>
-                <button id="btnresult">=</button>
-                <button id="btnDelete">C</button>
-                <button id="btnDeleteAll">Clear</button>
+            <div class="wrapper">
+                <div class="calculator">
+                    <div id="results"></div>
+                    <div id="typed"></div>
+                    <div id="error"></div>
+                    <button id="btn1">1</button>
+                    <button id="btn2">2</button>
+                    <button id="btn3">3</button>
+                    <button id="btn4">4</button>
+                    <button id="btn5">5</button>
+                    <button id="btn6">6</button>
+                    <button id="btn7">7</button>
+                    <button id="btn8">8</button>
+                    <button id="btn9">9</button>
+                    <button id="btn0">0</button>
+                    <button id="btndot">.</button>
+                    <button id="btnplus">+</button>
+                    <button id="btnminus">-</button>
+                    <button id="btnmul">*</button>
+                    <button id="btndiv">/</button>
+                    <button id="btnresult">=</button>
+                    <button id="btnDelete">C</button>
+                    <button id="btnDeleteAll">Clear</button>
+                </div>
             </div>
+            
+            
         </main>
         <script src="js_calc.js"></script>
     </body>

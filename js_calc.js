@@ -1,7 +1,6 @@
 /*
 TODO: 
-    
-    design
+    - design
 */
 
 function calculate(val1,val2,operator){

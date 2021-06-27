@@ -1,0 +1,115 @@
+* {
+    box-sizing: border-box;
+}
+h1 {
+    text-align: center;
+}
+main {
+    display: inline-block;
+    display: grid;
+    justify-content: center;
+    align-content: center;
+    font-size: 30px;
+}
+.wrapper {
+    display: grid;
+    grid-template-columns: repeat(4, 50px);
+    grid-template-rows: repeat(8,50px);
+    grid-template-areas:
+        'scr1 scr1 scr1 scr1'
+        'scr2 scr2 scr2 scr2'
+        'clra clra clr divi'
+        'seven eight nine multi'
+        'four five six minus'
+        'one two three plus'
+        'dott zeroo enter enter'
+        'err err err err';   
+}
+
+.calculator {
+    display: contents;
+    background-color: hotpink;
+}
+
+button {
+    border-radius: 2px;
+}
+
+button:hover{
+    box-shadow: 0px 0px 3px 0px black;
+}
+
+button:active {
+    transform: scale(0.9);
+    box-shadow: 0 3px 15px -2px;
+}
+#results {
+    grid-area: scr1;
+    text-align: right;
+    /* background-color: brown; */
+    border: solid 1px black;
+    
+}
+#typed {
+    grid-area: scr2;
+    text-align: right;
+    border: 1px black solid;
+    /* background-color: cadetblue; */
+}
+#btnDeleteAll {
+    grid-area: clra;
+}
+#btnDelete {
+    grid-area: clr;
+}
+#btnplus {
+    grid-area: plus;
+}
+#btnminus {
+    grid-area: minus;
+}
+#btnmul {
+    grid-area: multi;
+}
+#btndiv {
+    grid-area: divi;
+}
+#btn1 {
+    grid-area: one;
+}
+#btn2 {
+    grid-area: two;
+}
+#btn3 {
+    grid-area: three;
+}
+#btn4 {
+    grid-area: four;
+}
+#btn5 {
+    grid-area: five;
+}
+#btn6 {
+    grid-area: six;
+}
+#btn7 {
+    grid-area: seven;
+}
+#btn8 {
+    grid-area: eight;
+}
+#btn9 {
+    grid-area: nine;
+}
+#btn0 {
+    grid-area: zeroo;
+}
+#btndot {
+    grid-area: dott;
+}
+#btnresult {
+    grid-area: enter
+}
+#error {
+    grid-area: err;
+}
